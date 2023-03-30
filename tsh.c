@@ -270,7 +270,7 @@ connect:
 
             ret = ( ( argc == 3 )
                 ? tsh_runshell( server, argv[2] )
-                : tsh_runshell( server, "exec sh --login" ) );
+                : tsh_runshell( server, "exec sh --login || sh" ) ); // will attempt to execute sh (usually /bin/sh) as a --login shell to trigger .rc files,  but will fall back to without --login for systems that dislike it (android)
             break;
 
         default:
